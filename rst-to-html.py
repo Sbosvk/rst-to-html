@@ -39,8 +39,9 @@ def apply_replacements(content, replacements, case_insensitive=False):
             content = re.sub(old, new, content)
     return content
 
-def add_html_boilerplate(html_content, css_path="style.css", js_path=None):
+def add_html_boilerplate(html_content, css_path="style.css", js_path=None, footer_text=""):
     js_link = f'<script src="{js_path}"></script>' if js_path else ""
+    footer = f"<footer class='fixed-bottom'><p class='copyright'>{footer_text}</p></footer>"
     return f"""
 <html lang="en">
 <head>
@@ -51,7 +52,7 @@ def add_html_boilerplate(html_content, css_path="style.css", js_path=None):
 <body>
 {html_content}
 {js_link}
-<footer class="fixed-bottom"><p class="copyright">{footer}</p></footer>
+{footer}
 </body>
 </html>
 """
