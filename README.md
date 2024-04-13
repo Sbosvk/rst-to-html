@@ -33,10 +33,12 @@ pip install -r requirements.txt
 ```
 
 ## Options
-* --output_folder PATH: Specifies the directory where the converted HTML files will be placed. If not specified, files are generated in the same directory as the source files.
-* --replace OLD NEW: Specifies a pair of strings to find and replace in the documents. This option can be repeated to specify multiple replacements.
-* --css PATH: Specifies the path to the CSS stylesheet that should be linked in the HTML documents. Defaults to 'style.css'.
 
+| Arg | Description | Usage |
+| --- | ----------- | ----- |
+| --output_folder | Specifies the directory where the converted HTML files will be placed. If not specified, files are generated in the same directory as the source files. | --output_folder <PATH> |
+| --replace | Specifies a pair of strings to find and replace in the documents. This option can be repeated to specify multiple replacements. | --replace "OLD" "NEW" |
+| --css | Specifies the path to the CSS stylesheet that should be linked in the HTML documents. Defaults to 'style.css'. | --css <PATH> |
 
 ## Examples
 
