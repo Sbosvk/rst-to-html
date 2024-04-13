@@ -35,7 +35,8 @@ def apply_replacements(content, replacements):
         content = content.replace(old, new)
     return content
 
-def add_html_boilerplate(html_content, css_path="style.css"):
+def add_html_boilerplate(html_content, css_path="style.css", js_path=None):
+    js_link = f'<script src="{js_path}"></script>' if js_path else ""
     return f"""
 <html lang="en">
 <head>
@@ -45,6 +46,7 @@ def add_html_boilerplate(html_content, css_path="style.css"):
 </head>
 <body>
 {html_content}
+{js_link}
 </body>
 </html>
 """
@@ -55,7 +57,7 @@ def rst_to_html(rst_content, replacements):
     html_content = publish_parts(source=rst_content, writer_name='html')['html_body']
     return html_content
 
-def convert_folder(source_folder, output_folder=None, replacements=[], css_path="style.css"):
+def convert_folder(source_folder, output_folder=None, replacements=[], css_path="style.css", js_path=None):
     if output_folder is None:
         output_folder = source_folder
 
@@ -72,7 +74,7 @@ def convert_folder(source_folder, output_folder=None, replacements=[], css_path=
                     rst_content = file.read()
 
                 html_content = rst_to_html(rst_content, replacements)
-                full_html = add_html_boilerplate(html_content, css_path)
+                full_html = add_html_boilerplate(html_content, css_path, js_path)
 
                 with open(destination_path, 'w', encoding='utf-8') as file:
                     file.write(full_html)
@@ -85,10 +87,12 @@ def main():
     parser.add_argument("--output_folder", type=str, help="The path to the directory where the converted files should be placed.")
     parser.add_argument("--replace", action='append', nargs=2, metavar=('OLD', 'NEW'), help="Pairs of strings to find and replace in the documents.")
     parser.add_argument("--css", type=str, default="style.css", help="Path to the CSS stylesheet.")
+    parser.add_argument("--js", type=str, help="Path to the JavaScript file to include.")
 
     args = parser.parse_args()
     replacements = args.replace if args.replace else []
-    convert_folder(args.source_folder, args.output_folder, replacements, args.css)
+    convert_folder(args.source_folder, args.output_folder, replacements, args.css, args.js)
 
 if __name__ == "__main__":
     main()
+    
