@@ -49,25 +49,25 @@ pip install -r requirements.txt
 ### Convert Files with Output in a Different Folder:
 
 ```bash
-./script_name.py path_to_rst_files --output_folder path_to_output_folder
+./rst-to-html path_to_rst_files --output_folder path_to_output_folder
 ```
 
 ### Convert Files with Text Replacements:
 
 ```bash
-./script_name.py path_to_rst_files --replace "Lorem ipsum" "Example text"
+./rst-to-html path_to_rst_files --replace "Lorem ipsum" "Example text"
 ```
 
 ### Convert Files with a Custom CSS File:
 
 ```bash
-./script_name.py path_to_rst_files --css path_to_custom_style.css
+./rst-to-html path_to_rst_files --css path_to_custom_style.css
 ```
 
 ### Convert Files with a Custom JS File:
 
 ```bash
-./script_name.py path_to_rst_files --js path_to_custom_javascript.js
+./rst-to-html path_to_rst_files --js path_to_custom_javascript.js
 ```
 
 ## How It Works
