@@ -64,6 +64,12 @@ pip install -r requirements.txt
 ./script_name.py path_to_rst_files --css path_to_custom_style.css
 ```
 
+### Convert Files with a Custom JS File:
+
+```bash
+./script_name.py path_to_rst_files --js path_to_custom_javascript.js
+```
+
 ## How It Works
 
 The script processes each .rst file in the specified directory, applying any specified text replacements. It handles custom directives like toctree by converting them into navigable lists of links, and ignores others like highlight. Finally, it wraps the HTML output with basic HTML tags, including a head tag linking to the specified CSS file, and writes the results to the output directory.
